@@ -40,20 +40,6 @@ assert(add1OrElse0(Some(2)) == 3)
 assert(add1OrElse0(None) == 0)
 
 //Exercise 2
-//A Person may or may not have a middle name. The data model is represented as follows.
-case class Person(middleName: Option[String])
-
-def getMiddleName(person: Option[Person]): Option[String] = {
-  ???
-}
-
-//Tests dont worry about format.
-assert(getMiddleName(Some(Person(Some("Michael")))) == Some("Michael"))
-assert(getMiddleName(Some(Person(Some("Preston")))) == Some("Preston"))
-assert(getMiddleName(None) == None)
-assert(getMiddleName(Some(Person(None))) == None)
-
-//Exercise 3
 //Write a method that takes in an option.
 // If that option is an Option[Int] return a string of "Its an int"
 // If that option is an Option[String] that is equal to Some("Hello") then return "Hey"
@@ -72,3 +58,20 @@ assert(optionToString(Some("Goodbye")) == "Bye bye")
 assert(optionToString(None) == "Nothing there")
 assert(optionToString(Some(true)) == "")
 assert(optionToString(Some(Nil)) == "")
+
+
+//Exercise 3
+//A Person may or may not have a middle name. The data model is represented as follows.
+case class Person(middleName: Option[String])
+
+//Write a function which takes an optional person, if that person exists,
+//return their middle name as an optional value (Note the middle name may not exist)
+def getMiddleName(person: Option[Person]): Option[String] = {
+  ???
+}
+
+//Tests dont worry about format.
+assert(getMiddleName(Some(Person(Some("Michael")))) == Some("Michael"))
+assert(getMiddleName(Some(Person(Some("Preston")))) == Some("Preston"))
+assert(getMiddleName(None) == None)
+assert(getMiddleName(Some(Person(None))) == None)
