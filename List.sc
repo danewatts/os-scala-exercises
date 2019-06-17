@@ -1,6 +1,6 @@
 val listInt: List[Int] = List(1,2,3,4,5)
 val listString: List[String] = List("hello", "world", "bye")
-val emptyList: List[_] = Nil
+val emptyList: List[_] = ???
 
 //Nil
 
