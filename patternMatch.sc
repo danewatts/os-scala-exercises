@@ -140,8 +140,8 @@ case class Chair() extends Furniture
 def whatsFurnitureFor(piece: Furniture): String = ???
 
 
-//assert(whatsFurnitureFor(Table()) == "Dinner goes on the table")
-//assert(whatsFurnitureFor(Chair()) == "You sit on the chair")
+assert(whatsFurnitureFor(Table()) == "Dinner goes on the table")
+assert(whatsFurnitureFor(Chair()) == "You sit on the chair")
 
 
 // Exercise unapply
