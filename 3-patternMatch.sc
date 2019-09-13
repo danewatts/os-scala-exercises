@@ -1,8 +1,30 @@
 // pattern matching
 
 //use like if else if else if else if else
+// Pattern matching is started by taking your value and then writing `match`
+// You then use "case statements" to compare the values.
+// The case statements match will go through each case statement till it finds
+// a case that matches and stops at the first one.
+val string = "String"
+string match {
+  case "hello" => println("first if was true")
+  case "goodbye" => println("second if was true")
+  case _ => println("Catch all")
+}
+// The _ case statement is a catch all. Just like the else of an if else statement.
+// You can give the _ a variable name to use it in the right side of your case statement
+// This will still catch all.
+string match {
+  case "hello" => println("first if was true")
+  case "goodbye" => println("second if was true")
+  case value => println("Catch all: " + value)
+}
 
 //unapply
+
+// Patternmatching can be used to deconstruct some types
+// Here we are looking at an option and extracting a value from inside of it
+// This is done using the unapply function
 
 val someOption = Some("contents")
 
@@ -11,8 +33,11 @@ someOption match {
   case _ => "the option was empty"
 }
 
+// This is an example of a data model - Do not focus on the implementation of this.
 case class Person(name: String, age: Option[Int])
 
+// When using the apply function, scala allows shorthand where you can remove
+// the word apply but still execute it. This is syntactical sugar.
 Person.apply("pan", Some(23))
 Person("pan", Some(23))
 
@@ -23,13 +48,15 @@ def getDetails(p: Person) ={
   }
 }
 
-// ^^lists
-
 
 // guards on pattern match
 
+// Guards can make pattern matching very powerful. It will match a value where a given
+// predicate is satisfied.
+
 val someInt = 15
 
+// case a would match anything, but in this case it matches anything where a is equal to 14.
 someInt match {
   case a if a==14 => "number is 14"
   case a if a > 10 => "greater than 10"
@@ -39,15 +66,20 @@ someInt match {
 
 // type matching
 
-
+// Base type
 sealed trait Device
+// Concrete type that implements Device. You can say a Phone IS a Device
 case class Phone(model: String) extends Device{
   def screenOff = "Turning screen off"
 }
+// Concrete type that implements Device. You can say a Computer IS a Device
 case class Computer(model: String) extends Device {
   def screenSaverOn = "Turning screen saver on..."
 }
 
+// You can pattern match based off of a type. In this case our function gets a device,
+// We then match based off of the different types of device. This is done in the
+// case statement with `case variable: Type =>`
 def goIdle(device: Device) = device match {
   case p: Phone => p.screenOff
   case c: Computer => c.screenSaverOn
@@ -74,6 +106,14 @@ tuple match {
 }
 
 
+//^ tuple is a function. In "method A" the function tuple is called twice.
+// Once on the right side and once before the match. If this function has a side affect
+// (Like a http call) that side affect would happen twice.
+// Method B gives the name x to the Tuple as well as deconstructing the tuple to
+// match based on the values inside. x is then referred to on the right side meaning
+// the function isn't called twice.
+
+
 
 //   ______                   _
 //  |  ____|                 (_)
@@ -83,7 +123,7 @@ tuple match {
 //  |______/_/\_\___|_|  \___|_|___/\___||___/
 
 
-// Excericse if else if else
+// Exercises if else if else
 // refactor this messy if else to use pattern matching
 
 def dayOfTheWeek(day: String): Int = {

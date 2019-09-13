@@ -1,34 +1,62 @@
 val listInt: List[Int] = List(1,2,3,4,5)
 val listString: List[String] = List("hello", "world", "bye")
-val emptyList: List[_] = ???
+val emptyList: List[_] = Nil
 
-//Nil
+//Nil is an empty list
 
-//List.apply constructing
+//List.apply You can construct a List as follows
+List.apply(1,2,3,4,5)
+// The word apply can be removed for shorthand
+List(1,2,3,4,5)
 
-//List apply access
+//List apply access. If you have a list, you can run apply to extract a value
+//from its position. Lists are 0 base.
+listInt.apply(1)
+// The word apply can be removed for shorthand
+listInt(1)
 
-//.head
+//.head will get the first value. It can throw an exception if the list is empty
+listInt.head
+//emptyList.head //Uncomment for exception
 
-//.headOption
+//.headOption will get the first element in a safe way, returning an option
+listInt.headOption //returns Some(value)
+emptyList.headOption //returns None instead of an exception
 
-//.tail
+//.tail returns a List of every element in the list except the head (First value)
+listInt.tail
 
 //.size/.length
+listInt.size
+listString.length
 
-//.tail
+//.contains checks if the list contains a specific element
+listInt.contains(5)
+listInt.contains(8)
 
-//.contains
-
+// .exists takes a predicate and checks if any element in the list satisfies
+// the predicate
 //.exists
+listInt.exists(i => i < 4)
+listInt.exists(i => i > 12)
 
-//.drop
+//.drop will drop X number of elements from a list
+listInt.drop(3)
 
-//.take
+//.take will take the first X number of elements from a list
+listInt.take(2)
 
+// .map will execute a function on EVERY element in the list.
+// This can change the List's inner type
 //.map
+listInt.map(i => i.toString)
+listInt.map(i => i + 100)
 
+// .flatMap is used when your map function returns List[List[_]]
+// to flatten the structure by 1 to turn it to just List[_]
 //.flatMap
+listInt.map(i => List(i))
+listInt.flatMap(i => List(i))
 
 //Exercises
 
@@ -63,15 +91,29 @@ assert(byThree(List(1,2,4,5)) == false)
 
 //Session 2 ???
 
+// filter takes a predicate and keeps the values which satisfies the predicate
 //.filter
+listInt.filter(i => i % 2 == 0)
 
+// forAll takes a predicate and executes it against every value in the list
+// If they are all true, it returns true, if one or more are false, it returns false
 //.forAll
+listInt.forall(i => i < 4)
+listInt.forall(i => i < 8)
 
+// fold will recursively go through a list and execute a function on each element,
+// returning an accumulator that can be used within the function. After consuming
+// every element, the fold will return the final accumulated value
+// list.foldLeft(startingAccumulator)((accumulator, value) => accumulator + value)
+// This will add all the values in a list.
 //.foldLeft
+listInt.foldLeft(0)((acc, value) => acc + value)
+listString.foldLeft("")((acc, value) => acc + value)
 
+// foldRight does the same as foldLeft but works right to left
 //.foldRight
-
-//.fold
+listInt.foldRight(0)((value, acc) => acc + value)
+listString.foldRight("")((value, acc) => acc + value)
 
 //Exercises
 

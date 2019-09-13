@@ -1,9 +1,29 @@
 
 // if
+if(true) {
+  println("It was true")
+}
+
+if(5 < 3) {
+  println("How was it true???")
+}
 // else
+if("hello" != "goodbye"){
+  println("It was true")
+} else {
+  "How was it false???"
+}
 
 // combine them to make
 // else if
+val string = "String"
+if(string == "hello") {
+  println("first if was true")
+} else if(string == "goodbye") {
+  println("second if was true")
+} else {
+  println("Catch all")
+}
 
 // the last line of a 'if' or 'else' is the return statement as to why we dont need
 // to write 'return' like in java. it is also why we can chain if on to else.
