@@ -127,22 +127,15 @@ tuple match {
 // refactor this messy if else to use pattern matching
 
 def dayOfTheWeek(day: String): Int = {
-  if (day.toLowerCase == "monday") {
-    1
-  }else if (day.toLowerCase == "tuesday") {
-    2
-  }else if (day.toLowerCase == "wednesday") {
-    3
-  }else if (day.toLowerCase == "thursday") {
-    4
-  }else if (day.toLowerCase == "friday") {
-    5
-  }else if (day.toLowerCase == "saturday") {
-    6
-  }else if (day.toLowerCase == "sunday") {
-    7
-  }else {
-    0
+  day.toLowerCase() match {
+    case "monday"    => 1
+    case "tuesday"   => 2
+    case "wednesday" => 3
+    case "thursday"  => 4
+    case "friday"    => 5
+    case "saturday"  => 6
+    case "sunday"    => 7
+    case _           => 0
   }
 }
 
@@ -155,7 +148,16 @@ List("not a day", "Monday", "tuesday", "Wednesday", "thursday", "FRIDAY", "satur
 // multiple of 2,3 or 5 and if not says '2,3,5 not a factor'
 
 def lowestFactor(n: Int) ={
-  ???
+  n match {
+    case i if i % 2 == 0 =>
+      "factor of 2"
+    case i if i % 3 == 0 =>
+      "factor of 3"
+    case i if i % 5 == 0 =>
+      "factor of 5"
+    case _ =>
+      "2,3,5 not a factor"
+  }
 }
 
 
@@ -172,7 +174,12 @@ sealed trait Furniture
 case class Table() extends Furniture
 case class Chair() extends Furniture
 
-def whatsFurnitureFor(piece: Furniture): String = ???
+def whatsFurnitureFor(piece: Furniture): String = {
+  piece match {
+    case _: Table => "Dinner goes on the table"
+    case _: Chair => "You sit on the chair"
+  }
+}
 
 
 assert(whatsFurnitureFor(Table()) == "Dinner goes on the table")
@@ -187,7 +194,10 @@ assert(whatsFurnitureFor(Chair()) == "You sit on the chair")
 case class ToDo(notes: String)
 
 def getNextTodo(toToList: List[ToDo]): String ={
-  ???
+  toToList match {
+    case Nil => "you have nothing todo today"
+    case h :: _ => h.notes
+  }
 }
 
 assert(getNextTodo(Nil) == "you have nothing todo today")
