@@ -63,7 +63,7 @@ listInt.flatMap(i => List(i))
 //Write a function which takes a list of ints and adds 5 to each value
 
 def add5ToEach(l: List[Int]): List[Int] = {
-  ???
+  l.map(_+5)
 }
 
 assert(add5ToEach(listInt) == List(6,7,8,9,10))
@@ -72,7 +72,7 @@ assert(add5ToEach(listInt) == List(6,7,8,9,10))
 //with the size of each of those strings
 
 def sizeOfStrings(l: List[String]): List[Int] = {
-  ???
+  l.map(_.size)
 }
 
 assert(sizeOfStrings(listString) == List(5,5,3))
@@ -81,7 +81,7 @@ assert(sizeOfStrings(listString) == List(5,5,3))
 //those ints are divisible by 3.
 
 def byThree(l: List[Int]): Boolean = {
-  ???
+  l.exists(_%3 ==0)
 }
 
 assert(byThree(listInt) == true)
@@ -121,7 +121,7 @@ listString.foldRight("")((value, acc) => acc + value)
 //any string that contains the letter 'o'
 
 def removeStringWithO(l: List[String]): List[String] = {
-  ???
+  l.filterNot(_.contains('o'))
 }
 
 assert(removeStringWithO(listString) == List("bye"))
