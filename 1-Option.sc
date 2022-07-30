@@ -126,7 +126,7 @@ case class Person(middleName: Option[String])
 //Write a function which takes an optional person, if that person exists,
 //return their middle name as an optional value (Note the middle name may not exist)
 def getMiddleName(person: Option[Person]): Option[String] = {
-  ???
+  person.flatMap(value => value.middleName)
 }
 
 //Tests dont worry about format.
