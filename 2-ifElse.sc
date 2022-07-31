@@ -82,7 +82,7 @@ List.range(13,25).foreach{hour=>
 // when given any thing else return 'no your not the real pan'
 
 def isItPeterPan(firstname: String, surname: String):String = {
-  ???
+  if (firstname == "peter" && surname == "pan") "yes its you" else "no your not the real pan"
 }
 
 ////Exercise 3 assertions
@@ -104,7 +104,21 @@ assert(isItPeterPan("captain", "hook") == "no your not the real pan")
 // and at any other time it returns - 'you can not eat right now'
 
 def dietHelper(hour: Int): String = {
-  ???
+  if (hour == 9) {
+    "you may have breakfast"
+  } else if (hour == 11) {
+    "you may have an apple"
+  } else if (hour == 12) {
+    "you may have a tuna sandwich"
+  } else if (hour == 13) {
+    "you may have melon slices"
+  } else if (hour == 16) {
+    "you may have protein shake"
+  } else if (hour == 18) {
+    "you may have dinner"
+  } else {
+    "you can not eat right now"
+  }
 }
 
 
