@@ -19,7 +19,9 @@ val invalidJson = """{"a:""}"""
 
 //.as can throw an exception
 val invalidDogJsonStr = """{"name":"Dog"}"""
-Json.parse(invalidDogJsonStr).as[Dog]
+
+// NOTE - Uncomment to test invalid json error
+//Json.parse(invalidDogJsonStr).as[Dog]
 
 case class Person(name: String, age: Int)
 val person = Person("Pascal", 38)
