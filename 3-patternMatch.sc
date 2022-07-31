@@ -165,7 +165,12 @@ List("not a day", "Monday", "tuesday", "Wednesday", "thursday", "FRIDAY", "satur
 // multiple of 2,3 or 5 and if not says '2,3,5 not a factor'
 
 def lowestFactor(n: Int) ={
-  ???
+  n match {
+    case a if a % 2 == 0 => "factor of 2"
+    case a if a % 3 == 0 => "factor of 3"
+    case a if a % 5 == 0 => "factor of 5"
+    case _ => "2,3,5 not a factor"
+  }
 }
 
 
