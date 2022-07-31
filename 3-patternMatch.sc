@@ -127,22 +127,32 @@ tuple match {
 // refactor this messy if else to use pattern matching
 
 def dayOfTheWeek(day: String): Int = {
-  if (day.toLowerCase == "monday") {
-    1
-  }else if (day.toLowerCase == "tuesday") {
-    2
-  }else if (day.toLowerCase == "wednesday") {
-    3
-  }else if (day.toLowerCase == "thursday") {
-    4
-  }else if (day.toLowerCase == "friday") {
-    5
-  }else if (day.toLowerCase == "saturday") {
-    6
-  }else if (day.toLowerCase == "sunday") {
-    7
-  }else {
-    0
+//  if (day.toLowerCase == "monday") {
+//    1
+//  }else if (day.toLowerCase == "tuesday") {
+//    2
+//  }else if (day.toLowerCase == "wednesday") {
+//    3
+//  }else if (day.toLowerCase == "thursday") {
+//    4
+//  }else if (day.toLowerCase == "friday") {
+//    5
+//  }else if (day.toLowerCase == "saturday") {
+//    6
+//  }else if (day.toLowerCase == "sunday") {
+//    7
+//  }else {
+//    0
+//  }
+  day.toLowerCase match {
+    case "monday" => 1
+    case "tuesday" => 2
+    case "wednesday" => 3
+    case "thursday" => 4
+    case "friday" => 5
+    case "saturday" => 6
+    case "sunday" => 7
+    case _ => 0
   }
 }
 
