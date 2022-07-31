@@ -33,7 +33,11 @@ if(string == "hello") {
 // and 'good evening' as you would expect
 
 def greeter(hour: Int): String = {
-  ???
+  if (hour < 12) {
+    "good morning"
+  } else {
+    "good evening"
+  }
 }
 
 ////Exercise 1 assertions
@@ -51,7 +55,13 @@ List.range(12,25).foreach{hour=>
 // but when it is 12 it replies 'its lunch time!'
 
 def lunchGreeter(hour: Int):String = {
-  ???
+  if (hour < 12) {
+    "good morning"
+  } else if (hour == 12) {
+    "its lunch time!"
+  }else {
+    "good evening"
+  }
 }
 
 
