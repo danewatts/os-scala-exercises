@@ -187,7 +187,12 @@ sealed trait Furniture
 case class Table() extends Furniture
 case class Chair() extends Furniture
 
-def whatsFurnitureFor(piece: Furniture): String = ???
+def whatsFurnitureFor(piece: Furniture): String = {
+  piece match {
+    case t: Table => "Dinner goes on the table"
+    case c: Chair => "You sit on the chair"
+  }
+}
 
 
 assert(whatsFurnitureFor(Table()) == "Dinner goes on the table")
@@ -202,7 +207,10 @@ assert(whatsFurnitureFor(Chair()) == "You sit on the chair")
 case class ToDo(notes: String)
 
 def getNextTodo(toToList: List[ToDo]): String ={
-  ???
+  toToList match {
+    case a if a.nonEmpty => a.head.notes
+    case _ => "you have nothing todo today"
+  }
 }
 
 assert(getNextTodo(Nil) == "you have nothing todo today")
